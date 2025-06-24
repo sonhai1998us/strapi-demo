@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cart_items",
+  "info": {
+    "singularName": "cart-item",
+    "pluralName": "cart-items",
+    "displayName": "CartItem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "milkTea": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::milk-tea-and-coffee.milk-tea-and-coffee"
+    },
+    "toppings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::topping.topping"
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "min": 1
+    },
+    "sweetness": {
+      "type": "string"
+    },
+    "ice": {
+      "type": "string"
+    },
+    "note": {
+      "type": "text"
+    },
+    "totalPrice": {
+      "type": "integer"
+    }
+  }
+}

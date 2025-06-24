@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cart-item.cart-item"
+    },
+    "totalPrice": {
+      "type": "integer"
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "orderTime": {
+      "type": "datetime"
+    },
+    "isCompleted": {
+      "type": "boolean"
+    }
+  }
+}
