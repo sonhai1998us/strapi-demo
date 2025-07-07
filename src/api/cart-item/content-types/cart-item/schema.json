@@ -38,6 +38,11 @@
     },
     "totalPrice": {
       "type": "integer"
+    },
+    "isOrdered": {
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   }
 }
