@@ -551,6 +551,38 @@ export interface ApiToppingTopping extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiVoucherVoucher extends Struct.CollectionTypeSchema {
+  collectionName: 'vouchers';
+  info: {
+    displayName: 'Voucher';
+    pluralName: 'vouchers';
+    singularName: 'voucher';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::voucher.voucher'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.Enumeration<['percent', 'thousand']> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    value: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1065,6 +1097,7 @@ declare module '@strapi/strapi' {
       'api::milk-tea-and-coffee.milk-tea-and-coffee': ApiMilkTeaAndCoffeeMilkTeaAndCoffee;
       'api::order.order': ApiOrderOrder;
       'api::topping.topping': ApiToppingTopping;
+      'api::voucher.voucher': ApiVoucherVoucher;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
